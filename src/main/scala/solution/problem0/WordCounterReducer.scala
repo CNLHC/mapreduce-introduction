@@ -2,12 +2,12 @@ package solution.problem0
 
 import org.apache.hadoop.io.{IntWritable, Text}
 import org.apache.hadoop.mapreduce.Reducer
+import scala.collection.JavaConverters._
 
-class Reducer extends Reducer[Text, IntWritable, Text, IntWritable] {
-  override def reduce(key: Text, value: Iterable[IntWritable], ctx: Reducer[Text, IntWritable, Text, IntWritable]#context): Unit = {
-    var sum = value.asScala().foldLeft(0)(_ + _.get)
-    ctx.write(key, new IntWritable(sum))
-
+class WordCounterReducer extends Reducer[Text, IntWritable, Text, IntWritable] {
+  override
+  def reduce(key: Text, values: java.lang.Iterable[IntWritable],context:Reducer[Text,IntWritable,Text,IntWritable]#Context) {
+    val sum = values.asScala.foldLeft(0)(_ + _.get)
+    context.write(key, new IntWritable((sum)))
   }
-
 }
