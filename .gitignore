@@ -1,2 +1,7 @@
 _*/
 .DS_Store
+target/*
+project/target/*
+project/project/target/*
+.idea
+*.pyc
