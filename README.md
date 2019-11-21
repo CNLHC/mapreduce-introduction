@@ -1,11 +1,9 @@
 # mapreduce introduction
 
-This project use Hadoop streaming and Spark RDD to solve seven basic MapReduce problems. 
-All examples were write by scala. To Run these example, please checkout [this](#build-and-run)
+This project use `Hadoop streaming` and `Spark RDD` to solve seven basic MapReduce problems. 
+All examples were written by scala. To run them, check [this simple guide](#build-and-run).
 
 ## Covered problems
-
-seven problems include :
 
 0. words count
 1. inverted index
@@ -15,32 +13,31 @@ seven problems include :
 5. trimmed dna slice 
 6. sparse matrix multiply
 
-please refer to [Assignments.pdf](./problems/Assignments.pdf) for more information.
+Refer to [Assignments.pdf](./problems/Assignments.pdf) for more information.
 
-in the [problems](./problems) folder, we provide python code for each problems as conceptual demonstration of how 
+In the [problems](./problems) folder, we provide python code for each problems as conceptual demonstration of how 
 MapReduce work.
 
 ## build and run
 
 ### build 
 
-be sure you have sbt installed and then 
+Be sure you have sbt installed and then 
 
 1. cwd to the root of this repo
 2. launch sbt shell using command `sbt`
 3. waiting for sbt to resolve all build dependencies 
-(This may take very long ( sometimes 30min or more ) and have no echo at all.
- please consider configuring your sbt to use local maven mirror to speed up  this process )
+(This task may take very long time (sometimes 30min or more) and have no echo at all.
+Configuring your sbt to use local maven mirror can speed up this process )
 4. use  `assembly` to generate fat jar.
 
-after doing these correctly, the file `DataLab-assembly-0.1.0-SNAPSHOT.jar` should appear in `target/scala-2.12/`directory,
+The file `DataLab-assembly-0.1.0-SNAPSHOT.jar` should appear in `target/scala-2.12/` directory.
 
 ### run
 
-using docker is the most convenient way to run these examples. I recommend you use a image named "hadoop-spark-pig-hive"
- as runtime.
+Using docker is the most convenient way to run these examples. 
  
-1. pull the image from dockerhub
+1. pull image from dockerhub
  
 ```bash
 docker pull suhothayan/hadoop-spark-pig-hive
@@ -49,16 +46,16 @@ docker pull suhothayan/hadoop-spark-pig-hive
 2. create container using this image
 
 ```bash
-docker run\  
-       -it\
-       -v  <PATH TO THIS REPO>:/artifact\
-       --name mapreduce-introduction
-       --network host\
-       suhothayan/hadoop-spark-pig-hive:2.9.2\
+docker run \  
+       -it \
+       -v  <PATH TO THIS REPO>:/artifact \
+       --name mapreduce-introduction \
+       --network host \
+       suhothayan/hadoop-spark-pig-hive:2.9.2 \
        bash
 ```
- if everything is correct, you should attach to the container shell and 
- this repo can be found in the `/artifact` directory.
+ if everything is correct, you should have attached to the container shell. 
+ And this repo can be found at `/artifact` directory.
 
 3. init hdfs
 
